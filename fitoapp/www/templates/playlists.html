@@ -1,0 +1,46 @@
+<ion-view view-title="fitapp">
+  <ion-content class="a">
+
+    <div class="card">
+      <div class="item item-text-wrap item-stable">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lütfen Bilgilerinizi Giriniz!
+      </div>
+    </div>
+  
+     <!--Vücut Kitle İndeksleri-->
+    <div class="list">
+  
+      <!--Boy Bilgisi-->
+      <div class=" range range-positive">
+        Boy:
+        <input type="range" ng-model="boy" min="130" max="240" ng-change=hesapla(boy,kilo)>
+        {{boy}} cm
+      </div>
+
+      <!--Kilo Bilgisi-->
+      <div class="range range-positive">
+         Kilo:   
+        <input type="range" ng-model="kilo" min="20" max="180" ng-change=hesapla(boy,kilo)>
+        {{kilo}} kg
+      </div>
+    </div>
+
+ <!--Sonuc Bilgisi-->
+    <div class="ortala">
+      <div class="item item-text-wrap item-stable">
+        <h1>&nbsp;Vücut Kitle İndeksi {{sonuc | number:0}}</h1>
+        
+      </div>
+    </div>
+
+    <div class="ortala">
+      <button class="button button-full button-assertive">
+      <p>{{kilo&&boy ? ((kilo/(boy/100*boy/100))<18 ? 'Zayıf':(kilo/(boy/100*boy/100))<24 ? 'Normal':(kilo/(boy/100*boy/100))<30 ? 'Şişko':'Obez'):''}} </p>
+    </div>
+
+    <div class="item item-image">
+      <img src="img/{{kilo&&boy ? ((kilo/(boy/100*boy/100)) < 18 ? 'zayif':(kilo/(boy/100*boy/100))<24 ? 'normal':(kilo/(boy/100*boy/100))<30 ? 'sisko':'obez'):'normal'}}.png" width="80" height="230" >
+    </div>
+
+  </ion-content>
+</ion-view>
